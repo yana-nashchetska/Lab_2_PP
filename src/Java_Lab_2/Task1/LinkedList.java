@@ -1,58 +1,67 @@
 package Java_Lab_2.Task1;
 
-import java.util.Iterator;
+public class LinkedList<T> implements List<T> {
+    private Node<T> head;
+    private int index;
 
-public class LinkedList<T> implements List, Iterable<Node> {
-    private Node head;
+    public Node<T> getHead() {
+        return head;
+    }
+
 
     @Override
-    public void add(final int value) {
-        final Node node = new Node(value);
+    public void add(final T value) {
+        final Node<T> node = new Node<>(value);
 
         if (this.head == null) {
             this.head = node;
-
         } else {
-            Node lastNode = findLastNode(this.head);
+            Node<T> lastNode = findLastNode(this.head);
             lastNode.setNext(node);
         }
+
+    }
+
+    private Node<T> findLastNode(Node<T> head) {
+        if (head.getNext() == null) {
+            return head;
+        }
+        return findLastNode(head.getNext());
     }
 
     @Override
-    public Iterator<Node> iterator() {
-        return new LinkedListIterator(this.head);
-    }
+    public T get(int index) {
+        Node<T> pointer = this.head;
+        Node<T> errorContainer = new Node("Error");
 
-    @Override
-    public int get(int index) {
         if (index > size() - 1) {
-            return -3;
+            return errorContainer.getValue();
         }
-
-        int currentIndex = 0;
-        for (Node node : this) {
-            if (currentIndex == index) {
-                return node.getValue();
-            }
-            currentIndex++;
+        for (int i = 0; i < index; i++) {
+            pointer = pointer.getNext();
         }
-
-        return -1;
+        return pointer.getValue();
     }
 
     @Override
-    public void print() {
-        if (this.head == null) {
-            return;
+    public void delete(T value) {
+        Node<T> pointer = this.head;
+        if(pointer.getValue() == value) {
+            this.head = pointer.getNext();
+        } else {
+            while (pointer.getNext().getValue() != value) {
+                pointer = pointer.getNext();
+            }
+            pointer.setNext(pointer.getNext().getNext());
         }
-        printRecursive(this.head);
     }
 
     @Override
     public int size() {
         int size = 0;
 
-        Node pointer = this.head;
+        Node<T> pointer = this.head;
+
         while (pointer != null) {
             size++;
             pointer = pointer.getNext();
@@ -61,22 +70,15 @@ public class LinkedList<T> implements List, Iterable<Node> {
     }
 
     @Override
-    public void delete(int value) {
-
-        Node pointer = this.head;
-        for (Node node : this) {
-            if (value == node.getValue()) {
-                this.head = this.head.getNext();
-            }
-            if (pointer.getNext().getValue() == value) {
-                pointer.setNext(pointer.getNext().getNext());
-                return;
-            }
-            pointer = pointer.getNext();
-        }
+    public void print() {
+        recursivePrint(this.head);
+    }
+    @Override
+    public void clear() {
+        this.head = null;
     }
 
-    private void printRecursive(Node head) {
+    public void recursivePrint(Node<T> head) {
 
         if (head == null) {
             return;
@@ -87,15 +89,6 @@ public class LinkedList<T> implements List, Iterable<Node> {
         if (head.getNext() == null) {
             return;
         }
-        printRecursive(head.getNext());
+        recursivePrint(head.getNext());
     }
-
-    private Node findLastNode(Node head) {
-        if (head.getNext() == null) {
-            return head;
-        } else {
-            return findLastNode(head.getNext());
-        }
-    }
-
 }

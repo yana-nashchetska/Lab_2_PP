@@ -1,9 +1,10 @@
 package Java_Lab_2.Task1;
 
-public interface List {
-    void add(int value);
-    int get(int index);
-    int size();
+public interface List <T>{
+    void add(T value);
+    T get(int index);
+    void delete(T value);
     void print();
-    void delete(int i);
+    void clear();
+    int size();
 }
