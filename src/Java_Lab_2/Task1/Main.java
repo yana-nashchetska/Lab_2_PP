@@ -3,11 +3,11 @@ package Java_Lab_2.Task1;
 public class Main {
     public static void main(String[] args) {
 
-        List list = new LinkedList<>();
-        list.add(1);
-        list.add("nine");
-        list.add(6);
-        list.add('a');
+        StackAction list = new Stack<>();
+        list.push(1);
+        list.push("nine");
+        list.push(6);
+        list.push('a');
 
         System.out.println("Our default list: \n");
         list.print();
@@ -15,14 +15,12 @@ public class Main {
         System.out.println("\nList size is: ");
         System.out.println(list.size());
 
-        System.out.println("\nThe element with the index 2: ");
-        System.out.println(list.get(1));
-        System.out.println("\nThe element with the index 10, that not exist: ");
-        System.out.println(list.get(10));
-        System.out.println();
+        list.pop();
+        System.out.println("List, after first pop: ");
+        list.print();
 
-        list.delete(1);
-        System.out.println("List, after deleting the element with the index 1: ");
+        list.pop();
+        System.out.println("List, after second pop: ");
         list.print();
 
         System.out.println("Clearing list: \n");
