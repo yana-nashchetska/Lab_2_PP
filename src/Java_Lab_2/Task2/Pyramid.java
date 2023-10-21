@@ -6,31 +6,6 @@ public class Pyramid implements ShapeVolume{
 
      private double innerRadius;
 
-    public double getPyramidSide() {
-        return pyramidSide;
-    }
-
-    public void setPyramidSide(double pyramidSide) {
-        this.pyramidSide = pyramidSide;
-    }
-
-    public double getPyramidHeight() {
-        return pyramidHeight;
-    }
-
-    public void setPyramidHeight(double pyramidHeight) {
-        this.pyramidHeight = pyramidHeight;
-    }
-
-
-    public double getInnerRadius() {
-        return innerRadius;
-    }
-
-    public void setInnerRadius(double innerRadius) {
-        this.innerRadius = innerRadius;
-    }
-
     public Pyramid(double ... args) {
         this.pyramidSide = args[0];
         this.pyramidHeight = args[1];

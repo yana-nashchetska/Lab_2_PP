@@ -5,29 +5,6 @@ public class Triangle implements ShapeArea{
     private double sideB;
     private double sideC;
 
-    public double getSideA() {
-        return sideA;
-    }
-
-    public void setSideA(double sideA) {
-        this.sideA = sideA;
-    }
-
-    public double getSideB() {
-        return sideB;
-    }
-
-    public void setSideB(double sideB) {
-        this.sideB = sideB;
-    }
-
-    public double getSideC() {
-        return sideC;
-    }
-
-    public void setSideC(double sideC) {
-        this.sideC = sideC;
-    }
 
     public Triangle(double ... args) {
         this.sideA = args[0];

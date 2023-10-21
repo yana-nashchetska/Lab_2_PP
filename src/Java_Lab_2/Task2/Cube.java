@@ -3,14 +3,6 @@ package Java_Lab_2.Task2;
 public class Cube implements ShapeVolume {
     private double cubeSide;
 
-    public double getCubeSide() {
-        return cubeSide;
-    }
-
-    public void setCubeSide(double cubeSide) {
-        this.cubeSide = cubeSide;
-    }
-
     public Cube(double ... args) {
         this.cubeSide = args[0];
     }

@@ -3,15 +3,6 @@ package Java_Lab_2.Task2;
 public class Sphere implements ShapeVolume {
     private double sphereRadius;
 
-
-    public double getSphereRadius() {
-        return sphereRadius;
-    }
-
-    public void setSphereRadius(double sphereRadius) {
-        this.sphereRadius = sphereRadius;
-    }
-
     public Sphere(double ... args) {
         this.sphereRadius = args[0];
     }
