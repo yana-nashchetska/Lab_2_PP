@@ -1,9 +1,8 @@
 package Java_Lab_2.Task2;
 
-public class Triangle implements ShapeArea{
+public class Rectangle implements ShapeArea{
     private double sideA;
     private double sideB;
-    private double sideC;
 
     public double getSideA() {
         return sideA;
@@ -21,42 +20,26 @@ public class Triangle implements ShapeArea{
         this.sideB = sideB;
     }
 
-    public double getSideC() {
-        return sideC;
-    }
-
-    public void setSideC(double sideC) {
-        this.sideC = sideC;
-    }
-
-    public Triangle(double ... args) {
+    public Rectangle(double ... args) {
         this.sideA = args[0];
         this.sideB = args[1];
-        this.sideC = args[2];
     }
 
-    public double findPerimeter() {
-        return this.sideA + this.sideB + this.sideC;
-    }
     @Override
     public double calculateArea() {
-        return Math.sqrt(findPerimeter()
-                * (findPerimeter() - this.sideA)
-                * (findPerimeter() - this.sideB)
-                * (findPerimeter() - this.sideC));
+        return this.sideA * this.sideB;
     }
 
     @Override
     public void print() {
-        System.out.println(Triangle.this);
+        System.out.println(Rectangle.this);
     }
 
     @Override
     public String toString() {
-        return "Triangle \n" +
+        return "Rectangle \n" +
                 "\nsideA = " + sideA +
                 "\nsideB = " + sideB +
-                "\nsideC = " + sideC +
                 "\narea is = " + calculateArea()+
                 "\n";
     }
