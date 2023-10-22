@@ -1,7 +1,7 @@
 package Java_Lab_2.Task2;
 
 public class Cube implements ShapeVolume {
-    private double cubeSide;
+    final private double cubeSide;
 
     public Cube(double ... args) {
         this.cubeSide = args[0];

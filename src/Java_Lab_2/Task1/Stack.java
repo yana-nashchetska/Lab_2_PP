@@ -1,8 +1,6 @@
 package Java_Lab_2.Task1;
 
 import java.util.Iterator;
-import java.util.Spliterator;
-import java.util.function.Consumer;
 
 public class Stack<T> implements StackAction<T> {
     private Node<T> head;
@@ -10,7 +8,7 @@ public class Stack<T> implements StackAction<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new Iterator<T>() {
+        return new Iterator<>() {
             private Node<T> current = head;
 
             @Override
@@ -26,16 +24,6 @@ public class Stack<T> implements StackAction<T> {
             }
         };
     }
-
-  /*  @Override
-    public void forEach(Consumer<? super T> action) {
-        StackAction.super.forEach(action);
-    }*/
-
-/*    @Override
-    public Spliterator<T> spliterator() {
-        return StackAction.super.spliterator();
-    }*/
 
     @Override
     public void push(final T value) {

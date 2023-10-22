@@ -1,10 +1,10 @@
 package Java_Lab_2.Task2;
 
 public class Pyramid implements ShapeVolume{
-    private double pyramidSide;
-    private double pyramidHeight;
+    final private double pyramidSide;
+    final private double pyramidHeight;
 
-     private double innerRadius;
+     final private double innerRadius;
 
     public Pyramid(double ... args) {
         this.pyramidSide = args[0];

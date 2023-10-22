@@ -3,7 +3,7 @@ package Java_Lab_2.Task3;
 import java.time.LocalDateTime;
 
 public class Ticket extends Passenger{
-    private double price;
+    final private double price;
 
     public Ticket(String firstName, String lastName, LocalDateTime departureTime, LocalDateTime arrivalTime) {
         super(firstName, lastName);
@@ -19,16 +19,6 @@ public class Ticket extends Passenger{
     public double getPrice() {
         return price;
     }
-
-    //flight.createTicked("John", "Doe", "2021-10-10T10:00:00", "2021-10-10T12:00:00");
-    //flight.addTicket(ticket);
- /*   public Ticket createTicket(String firstName, String lastName, LocalDateTime departureTime, LocalDateTime arrivalTime) {
-        return new Ticket(firstName, lastName, departureTime, arrivalTime);
-    }*/
-
-/*    public void printTicket() {
-        System.out.println(this);
-    }*/
     @Override
     public String toString() {
 

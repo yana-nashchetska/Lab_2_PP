@@ -1,7 +1,7 @@
 package Java_Lab_2.Task1;
 
 public class Node <T> {
-    private T value;
+    final private T value;
     private Node<T> next;
 
     public Node(T value) {
@@ -10,10 +10,6 @@ public class Node <T> {
 
     public T getValue() {
         return value;
-    }
-
-    public void setValue(T value) {
-        this.value = value;
     }
 
     public Node<T> getNext() {

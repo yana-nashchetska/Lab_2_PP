@@ -31,22 +31,6 @@ public class AirportNetwork {
         airport.setCityName(cityName);
     }
 
-    /* public void calculateIncomeFromTo(LocalDateTime from, LocalDateTime to) {
-        double totalIncome = 0;
-        for (Airport airport : this.airports) {
-            for (FlightSchedule flightSchedule : airport.getFlightSchedules()) {
-                for (Flight flight : flightSchedule.getFlights()) {
-                    if ((flight.getDepartureTime().isAfter(from) || flight.getDepartureTime().isEqual(from))
-                            && (flight.getArrivalTime().isBefore(to) || flight.getArrivalTime().isEqual(to))) {
-                        totalIncome += flight.getTotalIncome();
-                    }
-                }
-            }
-        }
-        System.out.println("Total income for the specified period: " + totalIncome);
-    }
-*/
-
     public void calculateIncomeFromTo(LocalDateTime from, LocalDateTime to) {
         double totalIncome = 0;
         for (Airport airport : this.airports) {

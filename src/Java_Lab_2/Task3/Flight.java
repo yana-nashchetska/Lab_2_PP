@@ -5,13 +5,13 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Flight {
-    private ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+    private ArrayList<Ticket> tickets = new ArrayList<>();
 
-    private LocalDateTime departureTime;
-    private LocalDateTime arrivalTime;
-    private String depCity;
+    final private LocalDateTime departureTime;
+    final private LocalDateTime arrivalTime;
+    final private String depCity;
     private String arrCity;
-    private Plane plane;
+    final private Plane plane;
 
     private double totalIncome;
 

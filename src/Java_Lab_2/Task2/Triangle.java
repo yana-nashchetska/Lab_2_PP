@@ -1,9 +1,9 @@
 package Java_Lab_2.Task2;
 
 public class Triangle implements ShapeArea{
-    private double sideA;
-    private double sideB;
-    private double sideC;
+    final private double sideA;
+    final private double sideB;
+    final private double sideC;
 
 
     public Triangle(double ... args) {

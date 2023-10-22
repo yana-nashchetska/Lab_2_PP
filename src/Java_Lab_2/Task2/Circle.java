@@ -1,15 +1,7 @@
 package Java_Lab_2.Task2;
 
 public class Circle implements ShapeArea{
-    private double radius;
-    public double getRadius() {
-        return radius;
-    }
-
-    public void setRadius(double radius) {
-        this.radius = radius;
-    }
-
+    final private double radius;
     public Circle(double ... args) {
         this.radius = args[0];
     }

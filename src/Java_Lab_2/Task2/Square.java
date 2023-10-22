@@ -1,7 +1,7 @@
 package Java_Lab_2.Task2;
 
 public class Square implements ShapeArea{
-    private double squareSide;
+    final private double squareSide;
 
     public Square(double ... args) {
         this.squareSide = args[0];

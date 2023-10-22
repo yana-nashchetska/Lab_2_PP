@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Airport {
     private String cityName;
-    private ArrayList<FlightSchedule> flightSchedules = new ArrayList<>();
+    final private ArrayList<FlightSchedule> flightSchedules;
 
-    private ArrayList<Plane> planes = new ArrayList<>();
+    final private ArrayList<Plane> planes;
 
     public Airport(String cityName, ArrayList<FlightSchedule> flightSchedules, ArrayList<Plane> planes) {
         this.cityName = cityName;
@@ -14,9 +14,6 @@ public class Airport {
         this.planes = planes;
     }
 
-    public void addFlightSchedule(FlightSchedule flightSchedule) {
-        this.flightSchedules.add(flightSchedule);
-    }
     public String getCityName() {
         return cityName;
     }
@@ -29,17 +26,13 @@ public class Airport {
         return flightSchedules;
     }
 
-    public ArrayList<Plane> getPlanes() {
-        return planes;
-    }
-
     public void addPlane(Plane plane) {
         this.planes.add(plane);
     }
 
     public void editPlane(Plane plane, String status) {
         plane.setStatus(status);
-        if (status == "good") {
+        if (status.equals("good")) {
             System.out.println("Safe fly");
         } else {
             System.out.println("Danger to fly on this plane");

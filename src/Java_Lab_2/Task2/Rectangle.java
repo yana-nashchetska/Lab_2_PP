@@ -1,8 +1,8 @@
 package Java_Lab_2.Task2;
 
 public class Rectangle implements ShapeArea{
-    private double sideA;
-    private double sideB;
+    final private double sideA;
+    final private double sideB;
 
 
     public Rectangle(double ... args) {
