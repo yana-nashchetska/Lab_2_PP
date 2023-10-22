@@ -132,5 +132,8 @@ public class Main {
 
         airportKyiv.deletePlane(plane3);
         airportLviv.printPlanes();
+
+        airports.deleteAirport(airportKyiv);
+        airports.printAirports();
     }
 }
