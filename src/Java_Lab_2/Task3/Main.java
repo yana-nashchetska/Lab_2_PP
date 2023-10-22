@@ -19,6 +19,7 @@ public class Main {
 
         System.out.println("Before editing ticket");
         flight1.printFlightInfo();
+
         System.out.println();
         System.out.println();
 
@@ -29,8 +30,8 @@ public class Main {
         System.out.println("====================================");
         System.out.println();
 
-        Flight flight2 = new Flight(LocalDateTime.of(2020, 10, 13, 11, 11),
-                LocalDateTime.of(2020, 10, 15, 11, 11),
+        Flight flight2 = new Flight(LocalDateTime.of(2020, 10, 15, 11, 11),
+                LocalDateTime.of(2020, 10, 16, 11, 11),
                 "Kyiv", "NewYork", plane1);
 
         FlightSchedule flightScheduleKyivMorning = new FlightSchedule();
@@ -82,12 +83,54 @@ public class Main {
         Airport airportKyiv = new Airport("Kyiv", flightSchedulesKyiv, planesKyiv);
 
         airportKyiv.editPlane(plane2, "bad");
-        Flight flight3 = new Flight(LocalDateTime.of(2020, 10, 13, 11, 11),
-                LocalDateTime.of(2020, 10, 14, 11, 11),
+        Flight flight3 = new Flight(LocalDateTime.of(2020, 10, 17, 11, 11),
+                LocalDateTime.of(2020, 10, 19, 11, 11),
                 "Kyiv", "Lviv", plane2);
 
         flightScheduleKyivMorning.addFlight(flight3);
         flightScheduleKyivMorning.printSchedule();
 
+        Plane plane3 = new Plane("Windsor", "Boeing 737", "good");
+        airportKyiv.addPlane(plane3);
+
+        System.out.println("====================================");
+        airportKyiv.printPlanes();
+
+        AirportNetwork airports = new AirportNetwork();
+        airports.addAirport(airportKyiv);
+
+        System.out.println("====================================");
+
+        Plane plane5 = new Plane("AN", "MRIJA 225", "good");
+        Flight flight5 = new Flight(LocalDateTime.of(2020, 10, 19, 11, 11),
+                LocalDateTime.of(2020, 10, 20, 13, 11),
+                "Kyiv", "Lviv", plane5);
+
+        ArrayList <Plane> planesLviv = new ArrayList<>();
+        planesLviv.add(plane5);
+        FlightSchedule Morning = new FlightSchedule();
+        ArrayList <FlightSchedule> flightSchedulesLviv = new ArrayList<>();
+        flightSchedulesLviv.add(Morning);
+        Morning.addFlight(flight5);
+
+        Airport airportLviv = new Airport("Lviv", flightSchedulesLviv, planesLviv);
+        airports.addAirport(airportLviv);
+
+        airports.editAirport(airportLviv, "International Airport named after Danylo Halytsky");
+        airports.printAirports();
+
+        flight5.addTicket("Dean", "Winchester");
+        flight5.addTicket("Sam", "Winchester");
+        Morning.printSchedule();
+
+
+        System.out.println("====================================");
+        airports.calculateIncomeFromTo(LocalDateTime.of(2020, 10, 11, 11, 11),
+                LocalDateTime.of(2020, 10, 22, 22, 11));
+
+        System.out.println("====================================");
+
+        airportKyiv.deletePlane(plane3);
+        airportLviv.printPlanes();
     }
 }

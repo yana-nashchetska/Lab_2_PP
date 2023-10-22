@@ -1,6 +1,7 @@
 package Java_Lab_2.Task3;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Flight {
@@ -81,5 +82,14 @@ public class Flight {
                 "totalIncome : " + totalIncome;
     }
 
-
+    public LocalDateTime getDepartureTime() {
+        return departureTime;
+    }
+    public LocalDateTime getArrivalTime() {
+        return arrivalTime;
+    }
+    //==================================================================================================================
+    public Ticket[] getTickets() {
+        return tickets.toArray(new Ticket[0]);
+    }
 }

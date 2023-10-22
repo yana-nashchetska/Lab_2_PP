@@ -29,24 +29,12 @@ public class Airport {
         return flightSchedules;
     }
 
-    public void setFlightSchedules(ArrayList<FlightSchedule> flightSchedules) {
-        this.flightSchedules = flightSchedules;
-    }
-
     public ArrayList<Plane> getPlanes() {
         return planes;
     }
 
-    public void setPlanes(ArrayList<Plane> planes) {
-        this.planes = planes;
-    }
-
     public void addPlane(Plane plane) {
         this.planes.add(plane);
-    }
-
-    public void deletePlane(Plane plane) {
-        this.planes.remove(plane);
     }
 
     public void editPlane(Plane plane, String status) {
@@ -58,4 +46,14 @@ public class Airport {
         }
     }
 
+    public void printPlanes() {
+        for (Plane plane : this.planes) {
+            System.out.println(plane);
+        }
+    }
+
+
+    public void deletePlane(Plane plane3) {
+        this.planes.remove(plane3);
+    }
 }
