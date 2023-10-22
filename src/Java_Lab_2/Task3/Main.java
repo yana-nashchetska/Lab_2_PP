@@ -3,35 +3,91 @@ package Java_Lab_2.Task3;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+
 public class Main {
 
-    public static void main(String[] args) {
-        AirportNetwork airportNetwork = new AirportNetwork();
 
-        Airport airportKyiv = airportNetwork.createAirport("Kyiv");
-        airportNetwork.addAirport(airportKyiv);
+    public static void main(String... args) {
 
-        Airport airportLviv = airportNetwork.createAirport("Lviv");
-        airportNetwork.addAirport(airportLviv);
+        Plane plane1 = new Plane("Windsor", "Boeing 737", "good");
+        Flight flight1 = new Flight(LocalDateTime.of(2020, 10, 13, 11, 11),
+                LocalDateTime.of(2020, 10, 14, 11, 11),
+                "Kyiv", "Lviv", plane1);
+        flight1.addTicket("John", "Doe");
+        flight1.addTicket("Mary", "Doe");
+        flight1.addTicket("Petro", "Doe");
 
-        Airport airportNewYork = airportNetwork.createAirport("New York");
-        airportNetwork.addAirport(airportNewYork);
+        System.out.println("Before editing ticket");
+        flight1.printFlightInfo();
+        System.out.println();
+        System.out.println();
 
-        Airport airportLondon = airportNetwork.createAirport("London");
-        airportNetwork.addAirport(airportLondon);
+        System.out.println("After deleting ticket");
+        flight1.cancelTicket("John", "Doe");
+        flight1.printFlightInfo();
 
-        Airport airportParis = airportNetwork.createAirport("Paris");
-        airportNetwork.addAirport(airportParis);
+        System.out.println("====================================");
+        System.out.println();
 
-        System.out.println("Airports: ");
-        airportNetwork.printAirports();
+        Flight flight2 = new Flight(LocalDateTime.of(2020, 10, 13, 11, 11),
+                LocalDateTime.of(2020, 10, 15, 11, 11),
+                "Kyiv", "NewYork", plane1);
 
-        airportNetwork.createFlight(airportKyiv, airportLviv, LocalDateTime.parse("2021-05-20T19:00:00"), LocalDateTime.parse("2021-05-20T20:00:00"));
+        FlightSchedule flightScheduleKyivMorning = new FlightSchedule();
+        flightScheduleKyivMorning.addFlight(flight1);
+
+        flight2.addTicket("Yana", "Nashchetska");
+        flight2.addTicket("Olenka", "Pyatkovska");
+        flightScheduleKyivMorning.addFlight(flight2);
+
+        flightScheduleKyivMorning.printSchedule();
+
+        System.out.println();
+        System.out.println();
+
+        System.out.println("After editing ticket");
+        flight2.editTicket("Yana", "Nashchetska", "Jane", "Winchester");
+        System.out.println();
+
+        flightScheduleKyivMorning.printSchedule();
+
+        System.out.println();
+        System.out.println();
+
+        System.out.println("After deleting flight1");
+        flightScheduleKyivMorning.deleteFlight(flight1);
+
+        flightScheduleKyivMorning.printSchedule();
+
+        flightScheduleKyivMorning.editFlight(flight2, "Kansas-city");
+        System.out.println("After editing flight2");
+        flightScheduleKyivMorning.printSchedule();
+
+        System.out.println("====================================");
+        System.out.println();
+
+        Plane plane2 = new Plane("Windsor", "Boeing 737", "good");
+
+        FlightSchedule flightScheduleKyivEvening = new FlightSchedule();
 
 
+        ArrayList <FlightSchedule> flightSchedulesKyiv = new ArrayList<>();
+        flightSchedulesKyiv.add(flightScheduleKyivMorning);
+        flightSchedulesKyiv.add(flightScheduleKyivEvening);
 
-       /* airportNetwork.deleteAirport(airportParis);*/
+        ArrayList<Plane> planesKyiv = new ArrayList<>();
+        planesKyiv.add(plane1);
+        planesKyiv.add(plane2);
 
+        Airport airportKyiv = new Airport("Kyiv", flightSchedulesKyiv, planesKyiv);
+
+        airportKyiv.editPlane(plane2, "bad");
+        Flight flight3 = new Flight(LocalDateTime.of(2020, 10, 13, 11, 11),
+                LocalDateTime.of(2020, 10, 14, 11, 11),
+                "Kyiv", "Lviv", plane2);
+
+        flightScheduleKyivMorning.addFlight(flight3);
+        flightScheduleKyivMorning.printSchedule();
 
     }
 }

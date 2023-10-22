@@ -1,61 +1,43 @@
 package Java_Lab_2.Task3;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
-public class Ticket {
-    private UUID tickedID;
-    private int seatNumber;
 
-    private double ticketPrice;
+public class Ticket extends Passenger{
+    private double price;
 
-    public Ticket() {
-        this.tickedID = UUID.randomUUID();
-        this.setSeatNumber((int) (Math.random() * 100));
-    }
-    public int getSeatNumber() {
-        return seatNumber;
-    }
-
-    public void setSeatNumber(int seatNumber) {
-        this.seatNumber = seatNumber;
-    }
-
-    public double getTicketPrice() {
-        return ticketPrice;
-    }
-
-    public void setTicketPrice(LocalDateTime flyTime) {
-        switch (flyTime.getDayOfMonth()) {
-            case 1:
-                this.ticketPrice = 50;
-               break;
-                case 2:
-                this.ticketPrice = 100;
-
-                break;
-                case 3:
-                this.ticketPrice = 150;
-                break;
-            default:
-                this.ticketPrice = 200;
-                break;
+    public Ticket(String firstName, String lastName, LocalDateTime departureTime, LocalDateTime arrivalTime) {
+        super(firstName, lastName);
+        if (arrivalTime.getDayOfMonth() - departureTime.getDayOfMonth() == 0) {
+            this.price = 100;
+        } else if (arrivalTime.getDayOfMonth() - departureTime.getDayOfMonth() == 1) {
+            this.price = 200;
+        } else {
+            this.price = 300;
         }
     }
 
-    public Ticket(UUID tickedID, int seatNumber, double ticketPrice) {
-        this.tickedID = tickedID;
-        this.seatNumber = seatNumber;
-        this.ticketPrice = ticketPrice;
+    public double getPrice() {
+        return price;
     }
 
+    //flight.createTicked("John", "Doe", "2021-10-10T10:00:00", "2021-10-10T12:00:00");
+    //flight.addTicket(ticket);
+ /*   public Ticket createTicket(String firstName, String lastName, LocalDateTime departureTime, LocalDateTime arrivalTime) {
+        return new Ticket(firstName, lastName, departureTime, arrivalTime);
+    }*/
 
-    public Ticket buyTicket() {
-        return new Ticket();
-    }
+/*    public void printTicket() {
+        System.out.println(this);
+    }*/
+    @Override
+    public String toString() {
 
-    public void cancelTicket() {
-        this.tickedID = null;
-        this.seatNumber = 0;
-        this.ticketPrice = 0;
+
+        return "\nTicket :" +'\n' +
+                "Passenger info :" + '\n' +
+                "id = " + getId() + '\n' +
+                "firstName: " + getFirstName() + '\n' +
+                "lastName: " + getLastName() + '\n' +
+                "price: " + price;
     }
 }

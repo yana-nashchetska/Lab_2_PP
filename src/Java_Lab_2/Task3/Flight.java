@@ -1,37 +1,85 @@
 package Java_Lab_2.Task3;
-
-import java.util.HashMap;
-import java.util.Map;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Flight {
-    private String departureCity;
-    private String arrivalCity;
+    private ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
-    private Map<Ticket, Passenger> tickets = new HashMap<>();
+    private String depCity;
+    private String arrCity;
+    private Plane plane;
 
-    public Flight(String departureCity, String arrivalCity, LocalDateTime departureTime, LocalDateTime arrivalTime) {
-        this.departureCity = departureCity;
-        this.arrivalCity = arrivalCity;
+    private double totalIncome;
+
+    public void setArrCity(String arrCity) {
+        this.arrCity = arrCity;
+    }
+    public Flight(LocalDateTime departureTime, LocalDateTime arrivalTime, String depCity, String arrCity, Plane plane) {
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
+        this.depCity = depCity;
+        this.arrCity = arrCity;
+        this.plane = plane;
     }
 
-    public Flight(Airport departureAirport, Airport arrivalAirport, LocalDateTime departureTime, LocalDateTime arrivalTime) {
+
+    public void setTickets(ArrayList<Ticket> tickets) {
+        this.tickets = tickets;
     }
 
-    public void addTicket(Ticket ticket, Passenger passenger) {
-        this.tickets.put(ticket, passenger);
+    public double getTotalIncome() {
+        return totalIncome;
     }
+
+    public  void calculateTotalIncome() {
+        this.totalIncome = tickets.get(0).getPrice() * tickets.size();
+
+    }
+
+    public void addTicket(String firstName, String lastName) {
+        Ticket ticket = new Ticket(firstName, lastName, this.departureTime, this.arrivalTime);
+        this.tickets.add(ticket);
+        calculateTotalIncome();
+    }
+
+    public void editTicket(String firstName, String lastName, String newFirstName, String newLastName) {
+        for(Ticket ticket : this.tickets) {
+            if (ticket.getFirstName().equals(firstName) && ticket.getLastName().equals(lastName)) {
+                ticket.setFirstName(newFirstName);
+                ticket.setLastName(newLastName);
+                break;
+            }
+        }
+    }
+
+    public void cancelTicket(String firstName, String lastName) {
+        for(Ticket ticket : this.tickets) {
+            if (ticket.getFirstName().equals(firstName) && ticket.getLastName().equals(lastName)) {
+                this.tickets.remove(ticket);
+                calculateTotalIncome();
+                break;
+            }
+        }
+    }
+
+    public void printFlightInfo() {
+        System.out.println(this);
+    }
+
 
     @Override
     public String toString() {
-        return "Flight :\n" +
-                "departureCity = " + departureCity + '\'' +
-                "arrivalCity = " + arrivalCity + '\n' +
-                "departureTime = " + departureTime + '\n' +
-                "arrivalTime = " + arrivalTime + '\n' +
-                "tickets = " + tickets;
+
+        return "Flight from " + depCity + " to " + arrCity + '\n' +
+                "departureTime :" + departureTime + '\n' +
+                "arrivalTime :" + arrivalTime + '\n' +
+                "plane : " + plane +
+                "tickets : " + tickets +
+                "totalIncome : " + totalIncome;
     }
+
+
 }

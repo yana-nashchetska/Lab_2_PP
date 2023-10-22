@@ -1,45 +1,24 @@
 package Java_Lab_2.Task3;
+import java.util.UUID;
 
-public class Passenger {
-    private String name;
-    private String surname;
+public class Passenger extends Person{
+    private UUID id = UUID.randomUUID();
 
-    private Ticket ticket;
-
-    public Passenger(String name, String surname) {
-        this.name = name;
-        this.surname = surname;
+    public Passenger(String firstName, String lastName) {
+        super(firstName, lastName);
     }
 
-    public Passenger(String name, String surname, Ticket ticket) {
-        this.name = name;
-        this.surname = surname;
-        this.ticket = ticket;
+    public UUID getId() {
+        return id;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public String getSurname() {
-        return surname;
+    @Override
+    public String toString() {
+        return "Passenger: " + '\n' +
+                "id = " + id + '\n' +
+                "firstName: " + getFirstName() + '\n' +
+                "lastName: " + getLastName() + '\n';
     }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public Ticket getTicket() {
-        return ticket;
-    }
-
-    public void setTicket(String ticketId, String flightNumber) {
-        Ticket ticket = new Ticket();
-        this.ticket = ticket;
-    }
-
 }

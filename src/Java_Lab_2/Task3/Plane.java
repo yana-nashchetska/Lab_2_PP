@@ -1,45 +1,50 @@
 package Java_Lab_2.Task3;
 
 public class Plane {
-    private String companyName;
-    private String planeType;
-    private int seatsAmount; // for check
+    private String company;
+    private String model;
 
-    public String getCompanyName() {
-        return companyName;
+    private String status;
+
+    public Plane(String company, String model, String status) {
+        this.company = company;
+        this.model = model;
+        this.status = status;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public String getCompany() {
+        return company;
     }
 
-    public String getPlaneType() {
-        return planeType;
+    public void setCompany(String company) {
+        this.company = company;
     }
 
-    public void setPlaneType(String planeType) {
-        this.planeType = planeType;
+    public String getModel() {
+        return model;
     }
 
-    public int getSeatsAmount() {
-        return seatsAmount;
+    public void setModel(String model) {
+        this.model = model;
     }
 
-    public void setSeatsAmount(int seatsAmount) {
-        this.seatsAmount = seatsAmount;
+    public String getStatus() {
+        return status;
     }
 
-    public Plane(String companyName, String planeType, int seatsAmount) {
-        this.companyName = companyName;
-        this.planeType = planeType;
-        this.seatsAmount = seatsAmount;
+    public void setStatus(String status) {
+        this.status = status;
     }
+
+    public void editStatus(String status) {
+        this.status = status;
+    }
+
 
     @Override
     public String toString() {
-        return "Plane: \n" +
-                "companyName = " + companyName + '\n' +
-                "planeType = " + planeType + '\n' +
-                "seatsAmount = " + seatsAmount;
+        return  "\nfrom company " + company + '\n' +
+                "model : " + model + '\n' +
+                "status : " + status + '\n';
     }
 }
